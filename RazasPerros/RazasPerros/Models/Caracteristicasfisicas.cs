@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace RazasPerros.Models
+namespace RazasPerros
 {
     public partial class Caracteristicasfisicas
     {
@@ -12,6 +12,6 @@ namespace RazasPerros.Models
         public string Pelo { get; set; }
         public string Color { get; set; }
 
-        public Razas IdNavigation { get; set; }
+        public virtual Razas IdNavigation { get; set; }
     }
 }

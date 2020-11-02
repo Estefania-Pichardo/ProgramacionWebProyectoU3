@@ -9,7 +9,7 @@ namespace RazasPerros.Repositories
 {
 	public class RazasRepository
 	{
-		perrosContext context = new perrosContext();
+		sistem14_razasContext context = new sistem14_razasContext();
 
 		public IEnumerable<RazaViewModel> GetRazas()
 		{

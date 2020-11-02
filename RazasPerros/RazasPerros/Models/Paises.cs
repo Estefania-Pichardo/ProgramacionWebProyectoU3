@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace RazasPerros.Models
+namespace RazasPerros
 {
     public partial class Paises
     {
@@ -13,6 +13,6 @@ namespace RazasPerros.Models
         public int Id { get; set; }
         public string Nombre { get; set; }
 
-        public ICollection<Razas> Razas { get; set; }
+        public virtual ICollection<Razas> Razas { get; set; }
     }
 }

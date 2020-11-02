@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace RazasPerros.Models
+namespace RazasPerros
 {
     public partial class Estadisticasraza
     {
@@ -13,6 +13,6 @@ namespace RazasPerros.Models
         public uint AmistadPerros { get; set; }
         public uint NecesidadCepillado { get; set; }
 
-        public Razas IdNavigation { get; set; }
+        public virtual Razas IdNavigation { get; set; }
     }
 }

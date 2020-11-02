@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace RazasPerros.Models
+namespace RazasPerros
 {
     public partial class Razas
     {
@@ -15,9 +15,10 @@ namespace RazasPerros.Models
         public float AlturaMin { get; set; }
         public float AlturaMax { get; set; }
         public uint EsperanzaVida { get; set; }
+        public ulong Eliminado { get; set; }
 
-        public Paises IdPaisNavigation { get; set; }
-        public Caracteristicasfisicas Caracteristicasfisicas { get; set; }
-        public Estadisticasraza Estadisticasraza { get; set; }
+        public virtual Paises IdPaisNavigation { get; set; }
+        public virtual Caracteristicasfisicas Caracteristicasfisicas { get; set; }
+        public virtual Estadisticasraza Estadisticasraza { get; set; }
     }
 }
