@@ -1,14 +1,40 @@
-﻿
+﻿@model RazasPerros.Models.IndexViewModel
+
 @{
     Layout = "_Layout";
 }
 
 <section class="nav">
-    <h3>LISTA DE RAZAS</h3>
+    <h3>Lista de Razas</h3>
 </section>
-<ul>
-    <li>Chiuahua</li>
-    <li>Husky</li>
-</ul>
+
+<h3>
+    <a href="~/Admin/Home/Agregar">
+        Agregar nueva raza
+    </a>
+</h3>
+
+<section class="list">
+    <ul>
+        @foreach (var item in Model.Razas)
+        {
+            <li>
+                <a>
+                    <img src="~/imgs_perros/@(item.Id)_0.jpg">
+                    @item.Nombre
+                </a>
+
+                <div id="botones">
+                    <a href="~/Admin/Home/Editar/@item.Id">
+                        <input type="button" value="Editar" />
+                    </a>
+                    <a href="~/Admin/Home/Eliminar/@item.Id">
+                        <input type="button" value="Eliminar" />
+                    </a>
+                </div>
+            </li>
+        }
+    </ul>
+</section>
 
 
