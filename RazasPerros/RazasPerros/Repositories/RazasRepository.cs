@@ -47,9 +47,10 @@ namespace RazasPerros.Repositories
 		{
 			nombre = nombre.Replace("-", " ");
 			Random r = new Random();
+			var aleatorio = r.Next();
 			return context.Razas
 				.Where(x => x.Nombre != nombre)
-				.OrderBy(x => r.Next())
+				.OrderBy(x => aleatorio)
 				.Take(4)
 				.Select(x => new RazaViewModel { Id = x.Id, Nombre = x.Nombre });
 		}
