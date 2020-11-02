@@ -4,4 +4,15 @@
 }
 
 <h1>Eliminar Raza</h1>
+<form>
+    <input hidden="hidden" />
+    <p id="mensaje">¿Desea eliminar la raza "<span>CHIHUAHUA</span>"?</p>
+
+    <div id="botones">
+        <input type="submit" value="Si" />
+        <a asp-action="Index" asp-controller="Home" asp-area="Admin">
+            <input type="button" value="No" formnovalidate="formnovalidate" />
+        </a>
+    </div>
+</form>
 

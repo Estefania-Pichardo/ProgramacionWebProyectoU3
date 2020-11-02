@@ -6,26 +6,53 @@
 <h1>Agregar nueva raza de perro</h1>
 
 <form>
-    <label>Nombre:</label>
-    <input type="text" />
-    <label>Descripcion:</label>
-    <textarea cols="30" rows="5"></textarea>
-    <label>Otros nombres:</label>
-    <input type="text" />
-    <label>Pais:</label>
-    <select>
-        <option>Seleccione un país</option>
-    </select>
-    <label>Peso minimo:</label>
-    <input type="number" />
-    <label>Peso maximo:</label>
-    <input type="number" />
-    <label>Altura minima:</label>
-    <input type="number" />
-    <label>Altura Maxima:</label>
-    <input type="number" />
-    <label>Esperanza de vida:</label>
-    <input type="number" />
+    <div>
+        <label>Nombre:</label>
+        <input type="text" required="required" />
+        <label>Descripcion:</label>
+        <textarea cols="30" rows="5"></textarea>
+        <label>Otros nombres:</label>
+        <input type="text" />
+        <label>Pais:</label>
+        <select>
+            <option>Seleccione un país</option>
+        </select>
+        <label>Peso minimo:</label>
+        <input type="number" />
+        <label>Peso maximo:</label>
+        <input type="number" />
+        <label>Altura minima:</label>
+        <input type="number" />
+        <label>Altura Maxima:</label>
+        <input type="number" />
+        <label>Esperanza de vida:</label>
+        <input type="number" />
+        <label>Imagen:</label>
+        <input type="file" accept="image/jpg" onchange="mostrarImagen(this)" />
+        <img id="imagePreview" src="~/imgs_perros/0_0.jpg" alt="Vista previa de la imagen" />
 
+        <label>
+            @Html.ValidationSummary()
+        </label>
+
+        <div id="botones">
+            <input type="submit" value="Agregar" />
+            <a asp-action="Index" asp-controller="Home" asp-area="Admin">
+                <input type="button" value="Cancelar" id="btnCancelar" formnovalidate="formnovalidate" />
+            </a>
+        </div>
+    </div>
 </form>
 
+<script>
+    function mostrarImagen(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById("imagePreview").src = e.target.result;
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+</script>

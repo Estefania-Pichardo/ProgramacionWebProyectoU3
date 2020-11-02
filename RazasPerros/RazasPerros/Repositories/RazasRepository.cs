@@ -29,8 +29,7 @@ namespace RazasPerros.Repositories
 
 		public IEnumerable<char> GetLetrasIniciales()
 		{
-			return context.Razas.OrderBy(x => x.Nombre)
-				.Select(x => x.Nombre.First()).Distinct();
+			return context.Razas.OrderBy(x => x.Nombre).Select(x => x.Nombre.First()).Distinct();
 		}
 
 		public Razas GetRazaByNombre(string nombre)
