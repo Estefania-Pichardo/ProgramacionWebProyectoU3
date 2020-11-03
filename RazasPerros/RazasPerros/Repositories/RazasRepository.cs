@@ -13,7 +13,7 @@ namespace RazasPerros.Repositories
 
 		public IEnumerable<RazaViewModel> GetRazas()
 		{
-			return context.Razas.OrderBy(x => x.Nombre)
+			return context.Razas.Where(x=>x.Eliminado==0).OrderBy(x => x.Nombre)
 				.Select(x => new RazaViewModel
 				{
 					Id = x.Id,

@@ -14,11 +14,8 @@ namespace RazasPerros.Areas.Admin.Controllers
         public IActionResult Index(string id)
         {
             RazasRepository repos = new RazasRepository();
-            IndexViewModel vm = new IndexViewModel
-            {
-                Razas = id == null ? repos.GetRazas() : repos.GetRazasByLetraInicial(id),
-                LetrasIniciales = repos.GetLetrasIniciales()
-            };
+            IndexViewModel vm = new IndexViewModel();
+            vm.Razas = repos.GetRazas();
             return View(vm);
         }
         public IActionResult Agregar()
