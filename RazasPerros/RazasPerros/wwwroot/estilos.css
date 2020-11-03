@@ -264,6 +264,13 @@ section span {
             width: 100%;
         }
 
+main > h3 > a {
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    color: #247eb0;
+}
+
 form {
     width: 100%;
     display: flex;
@@ -319,11 +326,19 @@ form {
     font-weight: bold;
 }
 
-.botones .btnCancelar {
+.botones a {
     background-color: red;
     width: 50%;
     margin: 10px;
     font-weight: bold;
+    transition: ease background-color .3s;
+}
+
+.botones > a > input[type=button] {
+    background-color: transparent;
+    width: 100%;
+    font-weight: bold;
+    padding: 10px;
     transition: ease background-color .3s;
 }
 
@@ -332,27 +347,30 @@ form {
     cursor: pointer;
 }
 
-.botones .btnCancelar:hover {
+.botones a input[type=button]:hover {
     background-color: #cc0000;
     cursor: pointer;
 }
 
-h3 a{
-    text-decoration:none;
-    text-align:center;
-}
-.botonesIndex{
-    display:flex;
-    flex-direction:row;
-    background-color:blue;
+.main .botonesIndex {
+    display: flex;
+    justify-content: space-between;
 }
 
-    .botonesIndex a input[type=button] {
-        background-color: red;
+    .main .botonesIndex a {
         width: 50%;
-        font-weight: bold;
-        transition: ease background-color .3s;
     }
-    .botonesIndex a .btnEditar {
-        background-color: #f1b30f;
-    }
+
+        .main .botonesIndex a .btnIndex {
+            padding: 2px;
+            background-color: #f1b30f;
+            transition: ease background-color .3s;
+            color: saddlebrown;
+            font-weight: bold;
+            width: 90%;
+        }
+
+            .main .botonesIndex a .btnIndex:hover {
+                background-color: #c4930e;
+                cursor: pointer;
+            }

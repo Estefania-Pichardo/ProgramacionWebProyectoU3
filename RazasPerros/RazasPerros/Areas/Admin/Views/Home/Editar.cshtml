@@ -34,11 +34,12 @@
         @Html.ValidationSummary()
     </label>
 
-    <div id="botones">
+    <div class="botones">
         <input class="btnSumbit" type="submit" value="Guardar" />
-        <a asp-action="Index" asp-controller="Home" asp-area="Admin" class="btnCancelar">
-            <input  type="button" value="Cancelar"  formnovalidate="formnovalidate" />
+        <a href="~/Admin/Home">
+            <input type="button" value="Cancelar" />
         </a>
+
     </div>
 
 </form>
