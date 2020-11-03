@@ -264,3 +264,95 @@ section span {
             width: 100%;
         }
 
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial;
+}
+
+    form h3 {
+        text-align: center;
+        color: saddlebrown;
+    }
+
+    form label {
+        display: block;
+        margin-top: 10px;
+        font-size: large;
+        padding: 5px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+    }
+
+    form > input, form select, form textarea {
+        margin-bottom: 10px;
+        display: block;
+        width: 95%;
+        margin: auto;
+        align-content: center;
+        padding: 5px;
+    }
+
+    form img {
+        width: 300px;
+        margin-left: 15px;
+    }
+
+    form input[type=file] {
+        padding: 10px;
+    }
+
+.botones {
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+}
+
+.btnSumbit {
+    padding: 10px;
+    margin: 10px;
+    background-color: #f1b30f;
+    width: 50%;
+    transition: ease background-color .3s;
+    color: saddlebrown;
+    font-weight: bold;
+}
+
+.botones .btnCancelar {
+    background-color: red;
+    width: 50%;
+    margin: 10px;
+    font-weight: bold;
+    transition: ease background-color .3s;
+}
+
+.btnSumbit:hover {
+    background-color: #c4930e;
+    cursor: pointer;
+}
+
+.botones .btnCancelar:hover {
+    background-color: #cc0000;
+    cursor: pointer;
+}
+
+h3 a{
+    text-decoration:none;
+    text-align:center;
+}
+.botonesIndex{
+    display:flex;
+    flex-direction:row;
+    background-color:blue;
+}
+
+    .botonesIndex a input[type=button] {
+        background-color: red;
+        width: 50%;
+        font-weight: bold;
+        transition: ease background-color .3s;
+    }
+    .botonesIndex a .btnEditar {
+        background-color: #f1b30f;
+    }

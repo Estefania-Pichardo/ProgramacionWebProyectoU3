@@ -3,16 +3,15 @@
     Layout = "_Layout";
 }
 
-<h1>Eliminar Raza</h1>
 <form>
-    <input hidden="hidden" />
-    <p id="mensaje">¿Desea eliminar la raza "<span>CHIHUAHUA</span>"?</p>
+    <h3>Eliminar raza de perro</h3>
+    <label>Raza</label>
+    <input type="hidden" />
+    <input type="text" readonly />
 
-    <div id="botones">
-        <input type="submit" value="Si" />
-        <a asp-action="Index" asp-controller="Home" asp-area="Admin">
-            <input type="button" value="No" formnovalidate="formnovalidate" />
-        </a>
+    <div class="botones">
+        <input class="btnSumbit" type="submit" value="Confirmar" />
+        <input class="btnCancelar" type="button" value="Cancelar" />
     </div>
 </form>
 

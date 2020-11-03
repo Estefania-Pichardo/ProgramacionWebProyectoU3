@@ -3,11 +3,11 @@
     Layout = "_Layout";
 }
 
-<h1>Editar datos de raza de perro</h1>
 
 <form enctype="multipart/form-data">
+    <input type="hidden" />
     <label>Nombre:</label>
-    <input type="text" required="required"/>
+    <input type="text" required="required" />
     <label>Descripcion:</label>
     <textarea cols="30" rows="5"></textarea>
     <label>Otros nombres:</label>
@@ -35,12 +35,12 @@
     </label>
 
     <div id="botones">
-        <input type="submit" value="Guardar" />
-        <a asp-action="Index" asp-controller="Home" asp-area="Admin">
-            <input type="button" value="Cancelar" id="btnCancelar" formnovalidate="formnovalidate" />
+        <input class="btnSumbit" type="submit" value="Guardar" />
+        <a asp-action="Index" asp-controller="Home" asp-area="Admin" class="btnCancelar">
+            <input  type="button" value="Cancelar"  formnovalidate="formnovalidate" />
         </a>
     </div>
-   
+
 </form>
 
 <script>

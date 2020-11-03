@@ -3,46 +3,45 @@
     Layout = "_Layout";
 }
 
-<h1>Agregar nueva raza de perro</h1>
 
 <form>
-    <div>
-        <label>Nombre:</label>
-        <input type="text" required="required" />
-        <label>Descripcion:</label>
-        <textarea cols="30" rows="5"></textarea>
-        <label>Otros nombres:</label>
-        <input type="text" />
-        <label>Pais:</label>
-        <select>
-            <option>Seleccione un país</option>
-        </select>
-        <label>Peso minimo:</label>
-        <input type="number" />
-        <label>Peso maximo:</label>
-        <input type="number" />
-        <label>Altura minima:</label>
-        <input type="number" />
-        <label>Altura Maxima:</label>
-        <input type="number" />
-        <label>Esperanza de vida:</label>
-        <input type="number" />
-        <label>Imagen:</label>
-        <input type="file" accept="image/jpg" onchange="mostrarImagen(this)" />
-        <img id="imagePreview" src="~/imgs_perros/0_0.jpg" alt="Vista previa de la imagen" />
+    <h3>Agregar nueva raza de perro</h3>
+    <label>Nombre:</label>
+    <input type="text" />
+    <label>Descripcion:</label>
+    <textarea cols="80" rows="5"></textarea>
+    <label>Otros nombres:</label>
+    <input type="text" />
+    <label>Pais:</label>
+    <select>
+        <option>Seleccione un país</option>
+    </select><br />
+    <label>Peso minimo:</label>
+    <input type="number" />
+    <label>Peso maximo:</label>
+    <input type="number" />
+    <label>Altura minima:</label>
+    <input type="number" />
+    <label>Altura Maxima:</label>
+    <input type="number" />
+    <label>Esperanza de vida:</label>
+    <input type="number" />
+    <input type="file" accept="image/jpg" onchange="mostrarImagen(this)" />
+    <img id="imagePreview" src="~/imgs_perros/NoPhoto.jpg" alt="Vista previa de la imagen" />
 
-        <label>
-            @Html.ValidationSummary()
-        </label>
+    <label id="error">
+        @Html.ValidationSummary()
+    </label>
 
-        <div id="botones">
-            <input type="submit" value="Agregar"  />
-            <a asp-action="Index" asp-controller="Home" asp-area="Admin">
-                <input type="button" value="Cancelar" id="btnCancelar" formnovalidate="formnovalidate" />
-            </a>
-        </div>
+    <div class="botones">
+        <input class="btnSumbit" type="submit" value="Agregar" />
+        <input class="btnCancelar" type="button" value="Cancelar" />
     </div>
+
 </form>
+
+
+
 
 <script>
     function mostrarImagen(input) {
