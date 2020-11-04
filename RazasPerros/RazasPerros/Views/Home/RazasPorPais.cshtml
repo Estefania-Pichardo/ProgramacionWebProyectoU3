@@ -1,4 +1,5 @@
-﻿@{
+﻿@model RazasPerros.Models.ViewModels.RazasPorPaisViewModel
+@{
 	Layout = "_Layout";
 }
 
@@ -10,83 +11,22 @@
 </section>
 
 <section class="list">
-	<h4>GRAN BRETAÑA</h4>
-	<ul>
-		<li>
-			<a href="/Home/InfoPerro/">
-				<img src="/imgs_perros/80_0.jpg" />
-				Golden Retriever
-			</a>
-		</li>
-		<li>
-			<a href="/Home/InfoPerro/">
-				<img src="/imgs_perros/80_0.jpg" />
-				Golden Retriever
-			</a>
-		</li>
-		<li>
-			<a href="/Home/InfoPerro/">
-				<img src="/imgs_perros/80_0.jpg" />
-				Golden Retriever
-			</a>
-		</li>
-		<li>
-			<a href="/Home/InfoPerro/">
-				<img src="/imgs_perros/80_0.jpg" />
-				Golden Retriever
-			</a>
-		</li>
-		<li>
-			<a href="/Home/InfoPerro/">
-				<img src="/imgs_perros/80_0.jpg" />
-				Golden Retriever
-			</a>
-		</li>
-		<li>
-			<a href="/Home/InfoPerro/">
-				<img src="/imgs_perros/80_0.jpg" />
-				Golden Retriever
-			</a>
-		</li>
-	</ul>
-	<h4>GRAN BRETAÑA</h4>
-	<ul>
-		<li>
-			<a href="/Home/InfoPerro/">
-				<img src="/imgs_perros/80_0.jpg" />
-				Golden Retriever
-			</a>
-		</li>
-		<li>
-			<a href="/Home/InfoPerro/">
-				<img src="/imgs_perros/80_0.jpg" />
-				Golden Retriever
-			</a>
-		</li>
-		<li>
-			<a href="/Home/InfoPerro/">
-				<img src="/imgs_perros/80_0.jpg" />
-				Golden Retriever
-			</a>
-		</li>
-		<li>
-			<a href="/Home/InfoPerro/">
-				<img src="/imgs_perros/80_0.jpg" />
-				Golden Retriever
-			</a>
-		</li>
-		<li>
-			<a href="/Home/InfoPerro/">
-				<img src="/imgs_perros/80_0.jpg" />
-				Golden Retriever
-			</a>
-		</li>
-		<li>
-			<a href="/Home/InfoPerro/">
-				<img src="/imgs_perros/80_0.jpg" />
-				Golden Retriever
-			</a>
-		</li>
-	</ul>
+    @foreach (var pais in Model.Paises)
+    {
+        <h4>@pais.Nombre</h4>
+        <ul>
+            @foreach (var raza in pais.Razas)
+            {
+                <li>
+                    <a href="~/Raza/@(raza.Nombre.Replace(" ","-"))">
+                        <img src="~/imgs_perros/@(raza.Id)_0.jpg" />
+                        @raza.Nombre
+                    </a>
+                </li>
+            }
+        </ul>
+      
+    }
+
 </section>
 
