@@ -1,4 +1,4 @@
-﻿
+﻿@model RazasPerros.Models.Razas
 @{
     Layout = "_Layout";
 }
@@ -6,8 +6,8 @@
 <form>
     <h3>Eliminar raza de perro</h3>
     <label>Raza</label>
-    <input type="hidden" />
-    <input type="text" readonly />
+    <input type="hidden" asp-for="Id"/>
+    <input type="text" asp-for="Nombre" readonly />
 
     <div class="botones">
         <input class="btnSumbit" type="submit" value="Eliminar" />

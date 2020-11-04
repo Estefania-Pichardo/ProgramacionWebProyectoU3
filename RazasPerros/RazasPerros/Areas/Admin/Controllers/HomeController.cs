@@ -63,9 +63,11 @@ namespace RazasPerros.Areas.Admin.Controllers
             return View();
         }
 
-        public IActionResult Eliminar()
+        public IActionResult Eliminar(int id)
         {
-            return View();
+            RazasRepository repos = new RazasRepository();
+            var raza = repos.GetRazaById(id);
+            return View(raza);
         }
     }
 }
