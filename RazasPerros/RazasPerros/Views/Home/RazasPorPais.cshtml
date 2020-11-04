@@ -1,4 +1,4 @@
-﻿@model RazasPerros.Models.ViewModels.RazasPorPaisViewModel
+﻿@model IEnumerable<RazasPerros.Models.Paises>
 @{
 	Layout = "_Layout";
 }
@@ -11,7 +11,7 @@
 </section>
 
 <section class="list">
-    @foreach (var pais in Model.Paises)
+    @foreach (var pais in Model)
     {
         <h4>@pais.Nombre</h4>
         <ul>

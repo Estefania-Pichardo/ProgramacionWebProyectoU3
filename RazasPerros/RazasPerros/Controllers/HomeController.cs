@@ -44,10 +44,10 @@ namespace RazasPerros.Controllers
 		{
 			sistem14_razasContext context = new sistem14_razasContext();
 
-			RazasPorPaisViewModel vm = new RazasPorPaisViewModel();
-			vm.Paises = context.Paises.Include(x => x.Razas).OrderBy(x => x.Nombre);
+			//RazasPorPaisViewModel vm = new RazasPorPaisViewModel();
+			var paises = context.Paises.Include(x => x.Razas).OrderBy(x => x.Nombre);
 		
-			return View(vm);
+			return View(paises);
 		}
 	}
 }
