@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace RazasPerros
+namespace RazasPerros.Models
 {
     public partial class sistem14_razasContext : DbContext
     {
@@ -25,7 +25,7 @@ namespace RazasPerros
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySql("server=204.93.167.23;user id=sistem14_u3;password=unidad_3;database=sistem14_razas", x => x.ServerVersion("5.6.46-mysql"));
+                optionsBuilder.UseMySql("server=204.93.167.23;database=sistem14_razas;user=sistem14_u3;password=unidad_3", x => x.ServerVersion("5.6.46-mysql"));
             }
         }
 

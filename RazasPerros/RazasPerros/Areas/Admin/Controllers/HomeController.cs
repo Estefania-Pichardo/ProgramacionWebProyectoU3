@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using RazasPerros.Models;
+using RazasPerros.Models.ViewModels;
 using RazasPerros.Repositories;
 
 namespace RazasPerros.Areas.Admin.Controllers
@@ -20,10 +21,44 @@ namespace RazasPerros.Areas.Admin.Controllers
         }
         public IActionResult Agregar()
         {
-            return View();
+            RazaAdminViewModel rvm = new RazaAdminViewModel();
+            RazasRepository repos = new RazasRepository();
+            rvm.Paises = repos.GetPaises();
+            return View(rvm);
         }
 
-        public IActionResult Editar()
+        [HttpPost]
+        public IActionResult Agregar(RazaAdminViewModel rvm)
+        {
+            try
+            {
+
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+                RazasRepository repos = new RazasRepository();
+                rvm.Paises = repos.GetPaises();
+                return View(rvm);
+            }
+        }
+
+        public IActionResult Editar(int id)
+        {
+            RazaAdminViewModel rvm = new RazaAdminViewModel();
+            RazasRepository repos = new RazasRepository();
+            rvm.Paises = repos.GetPaises();
+            rvm.Raza = repos.GetRazaById(id);
+            if (rvm.Raza == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+                return View(rvm);
+        }
+        [HttpPost]
+        public IActionResult Editar(RazaAdminViewModel rvm)
         {
             return View();
         }

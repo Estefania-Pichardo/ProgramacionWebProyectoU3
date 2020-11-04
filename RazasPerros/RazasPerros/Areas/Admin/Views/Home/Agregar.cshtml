@@ -1,4 +1,5 @@
-﻿
+﻿@model RazasPerros.Models.ViewModels.RazaAdminViewModel
+
 @{
     Layout = "_Layout";
 }
@@ -7,51 +8,51 @@
 <form>
     <h3>Agregar nueva raza de perro</h3>
     <label>Nombre:</label>
-    <input type="text" />
+    <input type="text" asp-for="Raza.Nombre" />
     <label>Descripcion:</label>
-    <textarea cols="80" rows="5"></textarea>
+    <textarea cols="80" asp-for="Raza.Descripcion" rows="5"></textarea>
     <label>Otros nombres:</label>
-    <input type="text" />
+    <input type="text" asp-for="Raza.OtrosNombres" />
     <label>Pais:</label>
-    <select>
+    <select asp-for="Raza.IdPais" asp-items="@(new SelectList(Model.Paises,"Id","Nombre"))">
         <option>Seleccione un país</option>
     </select><br />
     <label>Peso minimo:</label>
-    <input type="number" />
+    <input type="number" asp-for="Raza.PesoMin" />
     <label>Peso maximo:</label>
-    <input type="number" />
+    <input type="number" asp-for="Raza.PesoMax" />
     <label>Altura minima:</label>
-    <input type="number" />
+    <input type="number" asp-for="Raza.AlturaMin" />
     <label>Altura Maxima:</label>
-    <input type="number" />
+    <input type="number" asp-for="Raza.AlturaMax" />
     <label>Esperanza de vida:</label>
-    <input type="number" />
-  
+    <input type="number" asp-for="Raza.EsperanzaVida" />
+
     <h4>Estadisticas</h4>
     <label>Nivel de energía:</label>
-    <input type="number" max="10" min="0" />
+    <input type="number" max="10" min="0" asp-for="Raza.Estadisticasraza.NivelEnergia" />
     <label>Facilidad de entrenamiento:</label>
-    <input type="number" max="10" min="0" />
+    <input type="number" max="10" min="0" asp-for="Raza.Estadisticasraza.FacilidadEntrenamiento" />
     <label>Ejercicio obligatorio:</label>
-    <input type="number" max="10" min="0" />
+    <input type="number" max="10" min="0" asp-for="Raza.Estadisticasraza.EjercicioObligatorio" />
     <label>Amistad con desconocidos:</label>
-    <input type="number" max="10" min="0" />
+    <input type="number" max="10" min="0" asp-for="Raza.Estadisticasraza.AmistadDesconocidos" />
     <label>Amistad con perros:</label>
-    <input type="number" max="10" min="0" />
+    <input type="number" max="10" min="0" asp-for="Raza.Estadisticasraza.AmistadPerros" />
     <label>Necesidad de cepillado:</label>
-    <input type="number" max="10" min="0" />
+    <input type="number" max="10" min="0" asp-for="Raza.Estadisticasraza.NecesidadCepillado" />
 
     <h4>Caracteristicas Fisicas</h4>
     <label>Patas:</label>
-    <input type="text" />
+    <input type="text" asp-for="Raza.Caracteristicasfisicas.Patas" />
     <label>Cola:</label>
-    <input type="text" />
+    <input type="text" asp-for="Raza.Caracteristicasfisicas.Cola" />
     <label>Hocico:</label>
-    <input type="text" />
+    <input type="text" asp-for="Raza.Caracteristicasfisicas.Hocico" />
     <label>Pelo:</label>
-    <input type="text" />
+    <input type="text" asp-for="Raza.Caracteristicasfisicas.Pelo" />
     <label>Color:</label>
-    <input type="text" />
+    <input type="text" asp-for="Raza.Caracteristicasfisicas.Cola" />
 
     <input type="file" accept="image/jpg" onchange="mostrarImagen(this)" />
     <img id="imagePreview" src="~/imgs_perros/NoPhoto.jpg" alt="Vista previa de la imagen" />

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace RazasPerros
+namespace RazasPerros.Models
 {
     public partial class Razas
     {
