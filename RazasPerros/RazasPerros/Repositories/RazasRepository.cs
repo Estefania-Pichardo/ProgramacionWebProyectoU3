@@ -79,6 +79,15 @@ namespace RazasPerros.Repositories
 			}
 		}
 
+		public virtual void Update(Razas entidad)
+		{
+			if (Validate(entidad))
+			{
+				context.Update(entidad);
+				context.SaveChanges();
+			}
+		}
+
 		public virtual bool Validate(Razas entidad)
 		{
 			if (string.IsNullOrWhiteSpace(entidad.Nombre))
@@ -87,6 +96,8 @@ namespace RazasPerros.Repositories
 				throw new Exception("Ingrese la descripción de la raza");
 			if (string.IsNullOrWhiteSpace(entidad.OtrosNombres))
 				throw new Exception("Ingrese otro nombre de la raza");
+			if (entidad.IdPais <= 0)
+				throw new Exception("Ingrese el país de la raza");
 			if (entidad.PesoMax <= 0)
 				throw new Exception("Ingrese el peso maximo de la raza");
 			if (entidad.PesoMin <= 0)

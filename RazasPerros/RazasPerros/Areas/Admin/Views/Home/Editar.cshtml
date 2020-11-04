@@ -5,9 +5,12 @@
 }
 
 
-<form enctype="multipart/form-data">
+<form enctype="multipart/form-data" asp-area="Admin" asp-controller="Home" asp-action="Editar" method="post">
     <h3>Editar raza de perro</h3>
 
+    <label>Codigo:</label>
+    <input type="text" asp-for="Raza.Id" />
+    <label type="text" asp-for="Raza.Id" />
     <input type="hidden" asp-for="Raza.Id" />
     <label>Nombre:</label>
     <input type="text" asp-for="Raza.Nombre" />
@@ -54,10 +57,10 @@
     <label>Pelo:</label>
     <input type="text" asp-for="Raza.Caracteristicasfisicas.Pelo" />
     <label>Color:</label>
-    <input type="text" asp-for="Raza.Caracteristicasfisicas.Cola" />
+    <input type="text" asp-for="Raza.Caracteristicasfisicas.Color" />
 
     <label>Imagen:</label>
-    <input type="file" accept="image/jpg" onchange="mostrarImagen(this)" asp-for="Archivo"/>
+    <input type="file" accept="image/jpg" onchange="mostrarImagen(this)" asp-for="Archivo" />
     <img id="imagePreview" src="~/imgs_perros/@Model.Imagen" alt="Vista previa de la imagen" />
 
     <label id="error">

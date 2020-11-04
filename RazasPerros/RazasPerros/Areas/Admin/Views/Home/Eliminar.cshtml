@@ -3,10 +3,10 @@
     Layout = "_Layout";
 }
 
-<form>
+<form  asp-area="Admin" asp-controller="Home" asp-action="Eliminar" method="post">
     <h3>Eliminar raza de perro</h3>
     <label>Raza</label>
-    <input type="hidden" asp-for="Id"/>
+    <label type="hidden" asp-for="Id"/>
     <input type="text" asp-for="Nombre" readonly />
 
     <div class="botones">

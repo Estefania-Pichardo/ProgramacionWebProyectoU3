@@ -5,8 +5,10 @@
 }
 
 
-<form enctype="multipart/form-data">
+<form enctype="multipart/form-data" asp-area="Admin" asp-controller="Home" asp-action="Agregar" method="post">
     <h3>Agregar nueva raza de perro</h3>
+    <label>Codigo:</label>
+    <input type="text" asp-for="Raza.Id" />
     <label>Nombre:</label>
     <input type="text" asp-for="Raza.Nombre" />
     <label>Descripcion:</label>
@@ -52,7 +54,7 @@
     <label>Pelo:</label>
     <input type="text" asp-for="Raza.Caracteristicasfisicas.Pelo" />
     <label>Color:</label>
-    <input type="text" asp-for="Raza.Caracteristicasfisicas.Cola" />
+    <input type="text" asp-for="Raza.Caracteristicasfisicas.Color" />
 
     <input type="file" accept="image/jpg" asp-for="Archivo" onchange="mostrarImagen(this)" />
     <img id="imagePreview" src="~/imgs_perros/NoPhoto.jpg" alt="Vista previa de la imagen" />

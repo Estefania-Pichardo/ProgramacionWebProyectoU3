@@ -103,13 +103,50 @@ namespace RazasPerros.Areas.Admin.Controllers
         {
             RazasRepository repos = new RazasRepository();
 
+            if (rvm.Archivo != null)
+            {
+                if (rvm.Archivo.ContentType != "image/jpeg" || rvm.Archivo.Length > 1024 * 1024 * 2)
+                {
+                    ModelState.AddModelError("", "Debe seleccionar un archivo jpg de menos de 2MB.");
+                    rvm.Paises = repos.GetPaises();
+                    return View(rvm);
+                }
+            }
+
             try
             {
                 var original = repos.GetRazaById(rvm.Raza.Id);
                 rvm.Paises = repos.GetPaises();
                 if (original != null)
                 {
-                    // FALTA CREAR EL METODO UPDATE EN EL REPOSITORY
+                    original.Descripcion = rvm.Raza.Descripcion;
+                    original.OtrosNombres = rvm.Raza.OtrosNombres;
+                    original.PesoMax = rvm.Raza.PesoMax;
+                    original.PesoMin = rvm.Raza.PesoMin;
+                    original.AlturaMax = rvm.Raza.AlturaMax;
+                    original.AlturaMin = rvm.Raza.AlturaMin;
+                    original.IdPais = rvm.Raza.IdPais;
+                    original.EsperanzaVida = rvm.Raza.EsperanzaVida;
+                    original.Estadisticasraza.NivelEnergia = rvm.Raza.Estadisticasraza.NivelEnergia;
+                    original.Estadisticasraza.FacilidadEntrenamiento = rvm.Raza.Estadisticasraza.FacilidadEntrenamiento;
+                    original.Estadisticasraza.EjercicioObligatorio = rvm.Raza.Estadisticasraza.EjercicioObligatorio;
+                    original.Estadisticasraza.AmistadDesconocidos = rvm.Raza.Estadisticasraza.AmistadDesconocidos;
+                    original.Estadisticasraza.AmistadPerros = rvm.Raza.Estadisticasraza.AmistadPerros;
+                    original.Estadisticasraza.NecesidadCepillado = rvm.Raza.Estadisticasraza.NecesidadCepillado;
+                    original.Caracteristicasfisicas.Cola = rvm.Raza.Caracteristicasfisicas.Cola;
+                    original.Caracteristicasfisicas.Patas = rvm.Raza.Caracteristicasfisicas.Patas;
+                    original.Caracteristicasfisicas.Color = rvm.Raza.Caracteristicasfisicas.Color;
+                    original.Caracteristicasfisicas.Hocico = rvm.Raza.Caracteristicasfisicas.Hocico;
+                    original.Caracteristicasfisicas.Pelo = rvm.Raza.Caracteristicasfisicas.Pelo;
+                    repos.Update(original);
+
+
+                    if(rvm.Archivo != null)
+                    {
+                        FileStream fs = new FileStream(Enviroment.WebRootPath + "/imgs_perros/" + rvm.Raza.Id + "_0.jpg", FileMode.Create);
+                        rvm.Archivo.CopyTo(fs);
+                        fs.Close();
+                    }
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -124,6 +161,7 @@ namespace RazasPerros.Areas.Admin.Controllers
 
         }
 
+        // YA ELIMINA. ELIMINACIÓN LOGICA.
         public IActionResult Eliminar(uint id)
         {
             RazasRepository repos = new RazasRepository();
@@ -138,14 +176,14 @@ namespace RazasPerros.Areas.Admin.Controllers
             var original = repos.GetRazaById(r.Id);
             if (original != null)
             {
-
+                original.Eliminado = 1;
+                repos.Update(original);
                 return RedirectToAction("Index", "Home");
             }
             else
             {
-                // CREAR EL METODO PARA ELIMINAR EN EL REPOSITORY. VA A SER UN UPDATE, PORQUE SERÁ ELIMINACIÓN LOGICA, NO FISICA.
+                return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction("Index", "Home");
         }
     }
 }
