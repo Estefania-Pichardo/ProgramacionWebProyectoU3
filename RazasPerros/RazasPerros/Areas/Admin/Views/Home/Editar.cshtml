@@ -57,8 +57,8 @@
     <input type="text" asp-for="Raza.Caracteristicasfisicas.Cola" />
 
     <label>Imagen:</label>
-    <input type="file" accept="image/jpg" onchange="mostrarImagen(this)" />
-    <img id="imagePreview" src="~/imgs_perros/0_0.jpg" alt="Vista previa de la imagen" />
+    <input type="file" accept="image/jpg" onchange="mostrarImagen(this)" asp-for="Archivo"/>
+    <img id="imagePreview" src="~/imgs_perros/@Model.Imagen" alt="Vista previa de la imagen" />
 
     <label id="error">
         @Html.ValidationSummary()

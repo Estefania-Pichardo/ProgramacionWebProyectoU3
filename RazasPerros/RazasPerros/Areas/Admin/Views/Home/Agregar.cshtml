@@ -5,7 +5,7 @@
 }
 
 
-<form>
+<form enctype="multipart/form-data">
     <h3>Agregar nueva raza de perro</h3>
     <label>Nombre:</label>
     <input type="text" asp-for="Raza.Nombre" />
@@ -54,7 +54,7 @@
     <label>Color:</label>
     <input type="text" asp-for="Raza.Caracteristicasfisicas.Cola" />
 
-    <input type="file" accept="image/jpg" onchange="mostrarImagen(this)" />
+    <input type="file" accept="image/jpg" asp-for="Archivo" onchange="mostrarImagen(this)" />
     <img id="imagePreview" src="~/imgs_perros/NoPhoto.jpg" alt="Vista previa de la imagen" />
 
     <label id="error">

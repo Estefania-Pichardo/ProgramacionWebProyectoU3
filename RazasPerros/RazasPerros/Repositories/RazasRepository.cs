@@ -21,7 +21,7 @@ namespace RazasPerros.Repositories
 				});
 		}
 
-		public Razas GetRazaById(int id)
+		public Razas GetRazaById(uint id)
 		{
 			return context.Razas.Include(x => x.Estadisticasraza)
 				.Include(x => x.Caracteristicasfisicas)
