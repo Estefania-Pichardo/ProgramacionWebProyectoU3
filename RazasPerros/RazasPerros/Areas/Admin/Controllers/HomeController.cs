@@ -42,7 +42,7 @@ namespace RazasPerros.Areas.Admin.Controllers
             {
                 if (rvm.Archivo == null)
                 {
-                    ModelState.AddModelError("", "Debe seleccionar la imagen del producto.");
+                    ModelState.AddModelError("", "Debe seleccionar la imagen de la raza.");
 
                     rvm.Paises = repos.GetPaises();
                     return View(rvm);

@@ -35,8 +35,8 @@ namespace RazasPerros.Repositories
 
 
 		public IEnumerable<char> GetLetrasIniciales()
-		{
-			return context.Razas.OrderBy(x => x.Nombre).Select(x => x.Nombre.First()).Distinct();
+		{			
+			return context.Razas.OrderBy(x => x.Nombre).Select(x => x.Nombre.First()).Distinct().ToList(); 
 		}
 
 		public Razas GetRazaByNombre(string nombre)
@@ -53,10 +53,12 @@ namespace RazasPerros.Repositories
 		{
 			nombre = nombre.Replace("-", " ");
 			Random r = new Random();
-			var aleatorio = r.Next();
-			return context.Razas
+			//var aleatorios = r.Next(1, 150);
+
+            return context.Razas
 				.Where(x => x.Nombre != nombre)
-				.OrderBy(x => aleatorio)
+				.ToList()
+				.OrderBy(x =>r.Next())
 				.Take(4)
 				.Select(x => new RazaViewModel { Id = x.Id, Nombre = x.Nombre });
 		}
@@ -108,29 +110,29 @@ namespace RazasPerros.Repositories
 				throw new Exception("Ingrese la altura minima de la raza");
 			if (entidad.EsperanzaVida <= 0)
 				throw new Exception("Ingrese la esperanza de vida de la raza");
-			if (entidad.Estadisticasraza.AmistadDesconocidos < 0)
-				throw new Exception("Ingrese el grado de amistad con desconocidos");
-			if (entidad.Estadisticasraza.AmistadPerros < 0)
-				throw new Exception("Ingrese el grado de amistad con otras razas");
-			if (entidad.Estadisticasraza.EjercicioObligatorio < 0)
-				throw new Exception("Ingrese el grado de ejercicio obligatorio");
-			if (entidad.Estadisticasraza.FacilidadEntrenamiento < 0)
-				throw new Exception("Ingrese el grado de facilidad de entrenamiento de la raza");
-			if (entidad.Estadisticasraza.NecesidadCepillado < 0)
-				throw new Exception("Ingrese el grado de necesidad de cepillado de la raza");
-			if (entidad.Estadisticasraza.NivelEnergia < 0)
-				throw new Exception("Ingrese el grado de nivel de energia de la raza");
-			if (string.IsNullOrWhiteSpace(entidad.Caracteristicasfisicas.Cola))
-				throw new Exception("Ingrese la descripción de la cola de la raza");
-			if (string.IsNullOrWhiteSpace(entidad.Caracteristicasfisicas.Color))
-				throw new Exception("Ingrese la descripción del color de la raza");
-			if (string.IsNullOrWhiteSpace(entidad.Caracteristicasfisicas.Hocico))
-				throw new Exception("Ingrese la descripción del hocico de la raza");
-			if (string.IsNullOrWhiteSpace(entidad.Caracteristicasfisicas.Patas))
-				throw new Exception("Ingrese la descripción de las patas de la raza");
-			if (string.IsNullOrWhiteSpace(entidad.Caracteristicasfisicas.Pelo))
-				throw new Exception("Ingrese la descripción del pelo de la raza");
-			return true;
+            if (entidad.Estadisticasraza.AmistadDesconocidos < 0)
+                throw new Exception("Ingrese el grado de amistad con desconocidos");
+            if (entidad.Estadisticasraza.AmistadPerros < 0)
+                throw new Exception("Ingrese el grado de amistad con otras razas");
+            if (entidad.Estadisticasraza.EjercicioObligatorio < 0)
+                throw new Exception("Ingrese el grado de ejercicio obligatorio");
+            if (entidad.Estadisticasraza.FacilidadEntrenamiento < 0)
+                throw new Exception("Ingrese el grado de facilidad de entrenamiento de la raza");
+            if (entidad.Estadisticasraza.NecesidadCepillado < 0)
+                throw new Exception("Ingrese el grado de necesidad de cepillado de la raza");
+            if (entidad.Estadisticasraza.NivelEnergia < 0)
+                throw new Exception("Ingrese el grado de nivel de energia de la raza");
+            if (string.IsNullOrWhiteSpace(entidad.Caracteristicasfisicas.Cola))
+                throw new Exception("Ingrese la descripción de la cola de la raza");
+            if (string.IsNullOrWhiteSpace(entidad.Caracteristicasfisicas.Color))
+                throw new Exception("Ingrese la descripción del color de la raza");
+            if (string.IsNullOrWhiteSpace(entidad.Caracteristicasfisicas.Hocico))
+                throw new Exception("Ingrese la descripción del hocico de la raza");
+            if (string.IsNullOrWhiteSpace(entidad.Caracteristicasfisicas.Patas))
+                throw new Exception("Ingrese la descripción de las patas de la raza");
+            if (string.IsNullOrWhiteSpace(entidad.Caracteristicasfisicas.Pelo))
+                throw new Exception("Ingrese la descripción del pelo de la raza");
+            return true;
 		}
 
 	}
