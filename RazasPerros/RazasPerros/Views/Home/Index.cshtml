@@ -6,14 +6,14 @@
 <section class="nav">
 	<h3>ABC de Razas</h3>
 	<nav>
-		<a href="~/Home/Index">Todas</a>
+		<a href="~/">Todas</a>
 
-		@foreach (var item in Model.LetrasIniciales.Distinct())
+		@foreach (var item in Model.LetrasIniciales.OrderBy(x=>x).Distinct())
 		{
-			<a href="~/Home/Index/@item">@item</a>
+			<a href="~/Razas/@item">@item</a>
 		}
 
-		<a href="~/Home/RazasPorPais">Listado por país</a>
+		<a href="~/RazasPorPais">Listado por país</a>
 	</nav>
 </section>
 <section class="list">

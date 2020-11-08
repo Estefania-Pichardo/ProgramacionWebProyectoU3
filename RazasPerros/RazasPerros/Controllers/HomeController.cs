@@ -12,6 +12,8 @@ namespace RazasPerros.Controllers
 {
 	public class HomeController : Controller
 	{
+		[Route("/")]
+		[Route("Razas/{id}")]
 		public IActionResult Index(string id)
 		{
 			RazasRepository repos = new RazasRepository();
@@ -39,12 +41,11 @@ namespace RazasPerros.Controllers
 				return View(vm);
 			}
 		}
-
+		[Route("RazasPorPais")]
 		public IActionResult RazasPorPais()
 		{
 			sistem14_razasContext context = new sistem14_razasContext();
-
-			//RazasPorPaisViewModel vm = new RazasPorPaisViewModel();
+			//RazasRepository repos = new RazasRepository();
 			var paises = context.Paises.Include(x => x.Razas).OrderBy(x => x.Nombre);
 		
 			return View(paises);

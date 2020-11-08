@@ -6,16 +6,16 @@
 <section class="nav">
 	<h3>Razas por país</h3>
 	<nav>
-		<a href="/Home/">Listado Alfabético de Razas</a>
+		<a href="~/">Listado Alfabético de Razas</a>
 	</nav>
 </section>
 
 <section class="list">
-    @foreach (var pais in Model)
+    @foreach (var pais in Model.Where(x=>x.Razas.Where(x=>x.Eliminado==0).Count()>0))
     {
         <h4>@pais.Nombre</h4>
         <ul>
-            @foreach (var raza in pais.Razas)
+            @foreach (var raza in pais.Razas.Where(x=>x.Eliminado==0))
             {
                 <li>
                     <a href="~/Raza/@(raza.Nombre.Replace(" ","-"))">
