@@ -6,7 +6,7 @@
 
 <form enctype="multipart/form-data" asp-area="Admin" asp-controller="Home" asp-action="Editar" method="post">
     <h3>Editar raza de perro</h3>
-    <input asp-for="Raza.Id" hidden/>
+    <input asp-for="Raza.Id" hidden readonly/>
     <label>Nombre:</label>
     <input type="text" asp-for="Raza.Nombre" required />
     <label>Descripcion:</label>
