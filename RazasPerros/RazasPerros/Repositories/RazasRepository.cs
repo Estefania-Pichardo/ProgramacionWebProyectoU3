@@ -115,18 +115,18 @@ namespace RazasPerros.Repositories
 				throw new Exception("Ingrese la altura minima de la raza");
 			if (entidad.EsperanzaVida <= 0)
 				throw new Exception("Ingrese la esperanza de vida de la raza");
-            if (entidad.Estadisticasraza.AmistadDesconocidos < 0)
-                throw new Exception("Ingrese el grado de amistad con desconocidos");
-            if (entidad.Estadisticasraza.AmistadPerros < 0)
-                throw new Exception("Ingrese el grado de amistad con otras razas");
-            if (entidad.Estadisticasraza.EjercicioObligatorio < 0)
-                throw new Exception("Ingrese el grado de ejercicio obligatorio");
-            if (entidad.Estadisticasraza.FacilidadEntrenamiento < 0)
-                throw new Exception("Ingrese el grado de facilidad de entrenamiento de la raza");
-            if (entidad.Estadisticasraza.NecesidadCepillado < 0)
-                throw new Exception("Ingrese el grado de necesidad de cepillado de la raza");
-            if (entidad.Estadisticasraza.NivelEnergia < 0)
-                throw new Exception("Ingrese el grado de nivel de energia de la raza");
+            if (entidad.Estadisticasraza.AmistadDesconocidos < 0 || entidad.Estadisticasraza.AmistadDesconocidos>10)
+                throw new Exception("Ingrese el grado de amistad con desconocidos, esta no puede ser mayor a 10");
+            if (entidad.Estadisticasraza.AmistadPerros < 0 || entidad.Estadisticasraza.AmistadPerros > 10)
+                throw new Exception("Ingrese el grado de amistad con otras razas, esta no puede ser mayor a 10");
+            if (entidad.Estadisticasraza.EjercicioObligatorio < 0 || entidad.Estadisticasraza.EjercicioObligatorio > 10)
+                throw new Exception("Ingrese el grado de ejercicio obligatorio, esta no puede ser mayor a 10");
+            if (entidad.Estadisticasraza.FacilidadEntrenamiento < 0|| entidad.Estadisticasraza.FacilidadEntrenamiento > 10)
+                throw new Exception("Ingrese el grado de facilidad de entrenamiento de la raza, esta no puede ser mayor a 10");
+            if (entidad.Estadisticasraza.NecesidadCepillado < 0 || entidad.Estadisticasraza.NecesidadCepillado > 10)
+                throw new Exception("Ingrese el grado de necesidad de cepillado de la raza, esta no puede ser mayor a 10");
+            if (entidad.Estadisticasraza.NivelEnergia < 0|| entidad.Estadisticasraza.NivelEnergia > 10)
+                throw new Exception("Ingrese el grado de nivel de energia de la raza, esta no puede ser mayor a 10");
             if (string.IsNullOrWhiteSpace(entidad.Caracteristicasfisicas.Cola))
                 throw new Exception("Ingrese la descripción de la cola de la raza");
             if (string.IsNullOrWhiteSpace(entidad.Caracteristicasfisicas.Color))

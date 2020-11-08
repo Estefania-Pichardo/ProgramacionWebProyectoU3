@@ -3,11 +3,11 @@
     Layout = "_Layout";
 }
 
-<form  asp-area="Admin" asp-controller="Home" asp-action="Eliminar" method="post">
+<form asp-area="Admin" asp-controller="Home" asp-action="Eliminar" method="post">
     <h3>Eliminar raza de perro</h3>
     <label>Raza</label>
-    <label type="hidden" asp-for="Id"/>
-    <input type="text" asp-for="Nombre" readonly/>
+    <label type="hidden" asp-for="Id" />
+    <input type="text" asp-for="Nombre" readonly style="width:100%; padding:5px"/>
 
     <div class="botones">
         <input class="btnSumbit" type="submit" value="Eliminar" />
