@@ -7,14 +7,15 @@
     <h3>Lista de Razas</h3>
 </section>
 
-<h3>
-    <a href="~/Admin/Home/Agregar">
-        Agregar nueva raza
-    </a>
-</h3>
 
 <section class="list">
     <ul>
+        <li>
+                <a href="~/Admin/Home/Agregar" style="margin:0 auto;">
+                    <img src="~/imgs/mas.png" style="width:auto; height:75%; margin:0 auto"/> <br />
+                    Agregar raza
+                </a>
+        </li>
         @foreach (var item in Model.Razas)
         {
             <li>

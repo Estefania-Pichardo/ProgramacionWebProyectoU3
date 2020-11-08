@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using RazasPerros.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Runtime.CompilerServices;
 
 namespace RazasPerros.Repositories
 {
@@ -23,7 +24,7 @@ namespace RazasPerros.Repositories
 
 		public Razas GetRazaById(uint id)
 		{
-			return context.Razas.Include(x => x.Estadisticasraza)
+			return context.Razas.Where(x => x.Eliminado == 0).Include(x => x.Estadisticasraza)
 				.Include(x => x.Caracteristicasfisicas)
 				.Include(x => x.IdPaisNavigation)
 				.FirstOrDefault(x => x.Id == id);
@@ -36,13 +37,13 @@ namespace RazasPerros.Repositories
 
 		public IEnumerable<char> GetLetrasIniciales()
 		{			
-			return context.Razas.OrderBy(x => x.Nombre).Select(x => x.Nombre.First()).Distinct().ToList(); 
+			return context.Razas.Where(x => x.Eliminado == 0).OrderBy(x => x.Nombre).Select(x => x.Nombre.First()).Distinct().ToList(); 
 		}
 
 		public Razas GetRazaByNombre(string nombre)
 		{
 			nombre = nombre.Replace("-", " ");
-			return context.Razas
+			return context.Razas.Where(x => x.Eliminado == 0)
 				.Include(x => x.Estadisticasraza)
 				.Include(x => x.Caracteristicasfisicas)
 				.Include(x => x.IdPaisNavigation)
@@ -56,7 +57,7 @@ namespace RazasPerros.Repositories
 			//var aleatorios = r.Next(1, 150);
 
             return context.Razas
-				.Where(x => x.Nombre != nombre)
+				.Where(x => x.Nombre != nombre && x.Eliminado==0)
 				.ToList()
 				.OrderBy(x =>r.Next())
 				.Take(4)
@@ -65,7 +66,7 @@ namespace RazasPerros.Repositories
 
 		public IEnumerable<Paises> GetRazasByPais()
 		{
-			return context.Paises.Include(x => x.Razas).OrderBy(x => x.Nombre);
+			return context.Paises.Include(x => x.Razas.Where(x=>x.Eliminado==0)).OrderBy(x => x.Nombre);
 		}
 		public IEnumerable<Paises> GetPaises()
 		{
@@ -92,6 +93,10 @@ namespace RazasPerros.Repositories
 
 		public virtual bool Validate(Razas entidad)
 		{
+			if (context.Razas.Any(x => x.Nombre == entidad.Nombre && x.Id != entidad.Id))
+				throw new Exception("Ya hay una raza registrada con ese nombre");
+			if (entidad.Id<=0)
+				throw new Exception("Ingrese el codigo de la raza");
 			if (string.IsNullOrWhiteSpace(entidad.Nombre))
 				throw new Exception("Ingrese el nombre de la raza");
 			if (string.IsNullOrWhiteSpace(entidad.Descripcion))

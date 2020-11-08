@@ -119,6 +119,7 @@ namespace RazasPerros.Areas.Admin.Controllers
                 rvm.Paises = repos.GetPaises();
                 if (original != null)
                 {
+
                     original.Descripcion = rvm.Raza.Descripcion;
                     original.OtrosNombres = rvm.Raza.OtrosNombres;
                     original.PesoMax = rvm.Raza.PesoMax;
@@ -166,6 +167,10 @@ namespace RazasPerros.Areas.Admin.Controllers
         {
             RazasRepository repos = new RazasRepository();
             var raza = repos.GetRazaById(id);
+            if (raza == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View(raza);
         }
 
