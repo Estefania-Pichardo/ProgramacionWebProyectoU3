@@ -37,6 +37,7 @@ namespace RazasPerros.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Agregar(RazaAdminViewModel rvm)
         {
+            sistem14_razasContext context = new sistem14_razasContext();
             RazasRepository repos = new RazasRepository();
             try
             {
@@ -57,7 +58,18 @@ namespace RazasPerros.Areas.Admin.Controllers
                     }
                 }
 
-                repos.Insert(rvm.Raza);
+                if (context.Razas.Any(x => x.Id == rvm.Raza.Id))
+                {
+                    ModelState.AddModelError("", "Ya existe una raza registrada con este codigo");
+
+                    rvm.Paises = repos.GetPaises();
+                    return View(rvm);
+                }
+                else
+                {
+                    repos.Insert(rvm.Raza);
+                }
+                
 
                 if (rvm.Archivo != null)
                 {
