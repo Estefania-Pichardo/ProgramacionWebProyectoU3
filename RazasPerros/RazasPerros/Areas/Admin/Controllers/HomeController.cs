@@ -169,6 +169,14 @@ namespace RazasPerros.Areas.Admin.Controllers
             {
                 ModelState.AddModelError("", ex.Message);
                 rvm.Paises = repos.GetPaises();
+                if (System.IO.File.Exists(Enviroment.WebRootPath + $"/imgs_perros/{rvm.Raza.Id}_0.jpg"))
+                {
+                    rvm.Imagen = rvm.Raza.Id + "_0.jpg";
+                }
+                else
+                {
+                    rvm.Imagen = "NoPhoto.jpg";
+                }
                 return View(rvm);
             }
 
